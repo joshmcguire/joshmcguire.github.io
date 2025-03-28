@@ -30,10 +30,6 @@
             box-sizing: border-box;
         }
         
-        .close-menu {
-            display: none !important;
-        }
-        
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
@@ -87,6 +83,7 @@
             display: flex;
             list-style: none;
             gap: 40px;
+            align-items: center;
         }
         
         nav a {
@@ -96,6 +93,8 @@
             font-size: 16px;
             transition: all 0.3s ease;
             position: relative;
+            display: inline-flex;
+            align-items: center;
         }
         
         nav a:not(.cta-button)::after {
@@ -114,7 +113,8 @@
         }
         
         .cta-button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             background: var(--gradient-primary);
             color: white;
             padding: 12px 28px;
@@ -123,6 +123,7 @@
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
+            height: 48px;
         }
         
         .cta-button:hover {
@@ -580,6 +581,47 @@
             cursor: pointer;
         }
         
+        .close-menu {
+            display: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            color: var(--secondary);
+            z-index: 100;
+            width: 24px;
+            height: 24px;
+            align-items: center;
+            justify-content: center;
+            background: white;
+        }
+        
+        .vision-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            margin-bottom: 16px;
+        }
+        
+        .vision-item:hover {
+            transform: translateY(-2px);
+        }
+        
+        .vision-icon {
+            font-size: 24px;
+        }
+        
+        .vision-item p {
+            margin: 0;
+            font-size: 18px;
+            color: var(--text-dark);
+        }
+        
         @media (max-width: 992px) {
             h1 {
                 font-size: 36px;
@@ -644,67 +686,7 @@
             }
             
             .close-menu {
-                display: flex !important;
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                cursor: pointer;
-                color: var(--secondary);
-                z-index: 100;
-                width: 24px;
-                height: 24px;
-                align-items: center;
-                justify-content: center;
-                background: white;
-            }
-        }
-        
-        .cta-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
-            color: var(--text-dark);
-        }
-        
-        .cta-grid {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .vision-points {
-            margin: 40px 0;
-            display: grid;
-            gap: 20px;
-        }
-        
-        .vision-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-        
-        .vision-item:hover {
-            transform: translateY(-2px);
-        }
-        
-        .vision-icon {
-            font-size: 24px;
-        }
-        
-        .vision-item p {
-            margin: 0;
-            font-size: 18px;
-            color: var(--text-dark);
-        }
-        
-        @media (max-width: 768px) {
-            .vision-points {
-                grid-template-columns: 1fr;
+                display: flex;
             }
         }
     </style>
@@ -746,7 +728,7 @@
                 <a href="#contact" class="cta-button">Get Your Free Assessment</a>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2425&q=80" alt="Custom WordPress Template" />
+                <img src="/api/placeholder/540/360" alt="Custom WordPress Template" />
             </div>
         </div>
     </section>
@@ -824,166 +806,3 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="section" id="why-us">
-        <div class="container">
-            <div class="subtitle">Perfect For Your Business</div>
-            <h2>Ideal for Businesses That Need Efficiency & Lead Conversion</h2>
-            <p>We specialize in creating websites for SaaS companies, tech startups, small businesses, and any organization that needs a sleek, high-performing, and conversion-optimized online presence without unnecessary headaches.</p>
-            
-            <div class="benefits">
-                <div class="benefit">
-                    <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <div>
-                        <h3>You Own It, and It Works—Indefinitely</h3>
-                        <p>Your site is built to last, with a robust modular framework that maintains visual and functional integrity. No ongoing development retainers, no breaking styles.</p>
-                    </div>
-                </div>
-                
-                <div class="benefit">
-                    <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <div>
-                        <h3>SEO & Speed Optimized</h3>
-                        <p>Fast-loading, search-friendly sites designed for maximum visibility and better user experience, leading to higher conversion rates.</p>
-                    </div>
-                </div>
-                
-                <div class="benefit">
-                    <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <div>
-                        <h3>Proven Expertise Across Industries</h3>
-                        <p>We have a track record of building high-value websites for SaaS companies, tech firms, small businesses, and organizations that require fast, high-performance sites.</p>
-                    </div>
-                </div>
-                
-                <div class="benefit">
-                    <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <div>
-                        <h3>No Unnecessary Hurdles—Just Results</h3>
-                        <p>No frustrating development bottlenecks. We deliver a polished, professional website in weeks, not months, so you can launch, iterate, and scale faster than ever.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="callout" id="contact">
-                <h2>Tired of Your Website Being a Technical Burden Instead of a Marketing Asset?</h2>
-                <p>Imagine creating new pages in minutes instead of days. Imagine never again hearing "that's not possible with our current setup" from your web team. Imagine a website that just works, looks amazing, and converts visitors - without the constant maintenance headaches.</p>
-                <a href="https://calendly.com/" target="_blank" class="cta-button">Get Your Free 30-Minute Website Assessment</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-grid">
-                <div class="cta-content">
-                    <h2>Tired of Your Website Being a Technical Burden?</h2>
-                    <div class="vision-points">
-                        <div class="vision-item">
-                            <span class="vision-icon">⚡️</span>
-                            <p>Create new pages in minutes instead of days</p>
-                        </div>
-                        <div class="vision-item">
-                            <span class="vision-icon">✨</span>
-                            <p>Never hear "that's not possible" from your web team again</p>
-                        </div>
-                        <div class="vision-item">
-                            <span class="vision-icon">🎯</span>
-                            <p>Get a website that converts visitors without constant maintenance</p>
-                        </div>
-                    </div>
-                    <a href="#contact" class="cta-button">Schedule Your Free Consultation</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>MyCustomTemplate</h3>
-                    <p>Custom WordPress templates for modern businesses. Built for performance, conversion, and growth.</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#">Custom WordPress Templates</a></li>
-                        <li><a href="#">Website Design</a></li>
-                        <li><a href="#">Component Libraries</a></li>
-                        <li><a href="#">Conversion Optimization</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="#">Portfolio</a></li>
-                        <li><a href="#">Case Studies</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Contact</h3>
-                    <ul>
-                        <li><a href="mailto:hello@mycustomtemplate.com">hello@mycustomtemplate.com</a></li>
-                        <li><a href="tel:+15551234567">(555) 123-4567</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                &copy; 2025 MyCustomTemplate. All rights reserved.
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        document.getElementById('hamburger').addEventListener('click', function() {
-            document.getElementById('nav').classList.add('active');
-        });
-        
-        document.getElementById('closeMenu').addEventListener('click', function() {
-            document.getElementById('nav').classList.remove('active');
-        });
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', function() {
-                document.getElementById('nav').classList.remove('active');
-            });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
