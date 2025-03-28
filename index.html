@@ -8,11 +8,14 @@
         :root {
             --primary: #4F46E5;
             --primary-dark: #4338CA;
+            --primary-light: #EEF2FF;
             --secondary: #1E293B;
+            --secondary-light: #F1F5F9;
             --accent: #F59E0B;
             --light: #F8FAFC;
             --gray: #64748B;
             --dark: #0F172A;
+            --text-dark: #1E293B;
             --gradient-primary: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
             --gradient-accent: linear-gradient(135deg, #F59E0B 0%, #F97316 100%);
             --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -25,6 +28,10 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        
+        .close-menu {
+            display: none !important;
         }
         
         body {
@@ -624,7 +631,7 @@
                 padding: 80px 20px 20px;
                 transition: right 0.3s ease;
                 box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-                z-index: 10;
+                z-index: 99;
             }
             
             nav.active {
@@ -637,13 +644,67 @@
             }
             
             .close-menu {
+                display: flex !important;
                 position: absolute;
                 top: 20px;
                 right: 20px;
                 cursor: pointer;
-                font-size: 24px;
                 color: var(--secondary);
-                z-index: 11;
+                z-index: 100;
+                width: 24px;
+                height: 24px;
+                align-items: center;
+                justify-content: center;
+                background: white;
+            }
+        }
+        
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
+            color: var(--text-dark);
+        }
+        
+        .cta-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .vision-points {
+            margin: 40px 0;
+            display: grid;
+            gap: 20px;
+        }
+        
+        .vision-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .vision-item:hover {
+            transform: translateY(-2px);
+        }
+        
+        .vision-icon {
+            font-size: 24px;
+        }
+        
+        .vision-item p {
+            margin: 0;
+            font-size: 18px;
+            color: var(--text-dark);
+        }
+        
+        @media (max-width: 768px) {
+            .vision-points {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -653,7 +714,12 @@
         <div class="container header-content">
             <div class="logo">My<span>CustomTemplate</span></div>
             <nav id="nav">
-                <div class="close-menu" id="closeMenu">✕</div>
+                <div class="close-menu" id="closeMenu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
                 <ul>
                     <li><a href="#features">Features</a></li>
                     <li><a href="#process">Process</a></li>
@@ -675,7 +741,7 @@
         <div class="container hero-content">
             <div class="hero-text">
                 <div class="subtitle">Escape The Visual Editor Nightmare</div>
-                <h1>Stop Fighting With Website Builders</h1>
+                <h1>Break Free From Website Builders</h1>
                 <p>Stop wasting hours fighting with Elementor, Divi, or WPBakery just to align text properly. Your business deserves a custom template built for performance, not perpetual troubleshooting.</p>
                 <a href="#contact" class="cta-button">Get Your Free Assessment</a>
             </div>
@@ -813,6 +879,31 @@
                 <h2>Tired of Your Website Being a Technical Burden Instead of a Marketing Asset?</h2>
                 <p>Imagine creating new pages in minutes instead of days. Imagine never again hearing "that's not possible with our current setup" from your web team. Imagine a website that just works, looks amazing, and converts visitors - without the constant maintenance headaches.</p>
                 <a href="https://calendly.com/" target="_blank" class="cta-button">Get Your Free 30-Minute Website Assessment</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-grid">
+                <div class="cta-content">
+                    <h2>Tired of Your Website Being a Technical Burden?</h2>
+                    <div class="vision-points">
+                        <div class="vision-item">
+                            <span class="vision-icon">⚡️</span>
+                            <p>Create new pages in minutes instead of days</p>
+                        </div>
+                        <div class="vision-item">
+                            <span class="vision-icon">✨</span>
+                            <p>Never hear "that's not possible" from your web team again</p>
+                        </div>
+                        <div class="vision-item">
+                            <span class="vision-icon">🎯</span>
+                            <p>Get a website that converts visitors without constant maintenance</p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="cta-button">Schedule Your Free Consultation</a>
+                </div>
             </div>
         </div>
     </section>
