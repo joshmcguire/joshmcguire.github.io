@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyCustomTemplate - Custom WordPress Templates for Modern Businesses</title>
+    <style>
+        :root {
+            --primary: #3563E9;
+            --primary-dark: #2851D1;
+            --secondary: #1E293B;
+            --accent: #FBA834;
+            --light: #F8FAFC;
+            --gray: #64748B;
+            --dark: #0F172A;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 20px 0;
+            background-color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .hero {
+            padding: 100px 0;
+            background: linear-gradient(100deg, #f8fafc 60%, #e0e7ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(53,99,233,0.1) 0%, rgba(53,99,233,0) 70%);
+            top: -300px;
+            right: -100px;
+            z-index: 1;
+            border-radius: 100%;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: var(--gray);
+            font-size: 18px;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-alt {
+            background-color: white;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        
+        .icon svg {
+            width: 30px;
+            height: 30px;
+            color: white;
+        }
+        
+        .process {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .process-step {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            align-items: flex-start;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 20px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .testimonials {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .client {
+            display: flex;
+            align-items: center;
+        }
+        
+        .client-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--gray);
+            margin-right: 15px;
+        }
+        
+        .client-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .client-info p {
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+        
+        .callout {
+            background: linear-gradient(100deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 10px;
+            padding: 60px;
+            color: white;
+            text-align: center;
+            margin-top: 100px;
+        }
+        
+        .callout h2, .callout p {
+            color: white;
+        }
+        
+        .callout .cta-button {
+            background-color: white;
+            color: var(--primary);
+            font-size: 18px;
+            padding: 15px 30px;
+            margin-top: 20px;
+        }
+        
+        .callout .cta-button:hover {
+            background-color: var(--light);
+        }
+        
+        .benefits {
+            margin-top: 40px;
+        }
+        
+        .benefit {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        
+        .benefit-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 36px;
+            }
+            
+            h2 {
+                font-size: 28px;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            
+            .hero-image {
+                max-width: 80%;
+                margin: 0 auto;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .callout {
+                padding: 40px 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 280px;
+                height: 100vh;
+                background-color: white;
+                padding: 80px 20px 20px;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                z-index: 10;
+            }
+            
+            nav.active {
+                right: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .close-menu {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">My<span>CustomTemplate</span></div>
+            <nav id="nav">
+                <div class="close-menu" id="closeMenu">✕</div>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#why-us">Why Us</a></li>
+                    <li><a href="#contact" class="cta-button">Get Started</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <div class="subtitle">WordPress Development Reimagined</div>
+                <h1>A Smarter Way to Build Your Website</h1>
+                <p>Skip the frustration of unreliable visual editors. Your business deserves a clean, professional, and fully modular website—without wasting time adjusting pixels.</p>
+                <a href="#contact" class="cta-button">Schedule a Free Consultation</a>
+            </div>
+            <div class="hero-image">
+                <img src="/api/placeholder/540/360" alt="Custom WordPress Template" />
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="features">
+        <div class="container">
+            <div class="subtitle">Stop Fighting With Website Builders</div>
+            <h2>Focus on Growth, Not Website Perfectionism</h2>
+            <p>Your time is best spent running your business, not struggling with endless design tweaks. We deliver sleek, high-performing websites that let you focus on what truly matters.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                        </svg>
+                    </div>
+                    <h3>Fully Modular Design</h3>
+                    <p>Create unlimited new pages using existing design elements, maintaining perfect brand consistency without technical complexities.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3>Lightning-Fast Performance</h3>
+                    <p>Our templates are optimized for speed, ensuring your visitors have a seamless experience and improving your search engine rankings.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                        </svg>
+                    </div>
+                    <h3>Conversion-Optimized</h3>
+                    <p>Every element is designed with conversion in mind, helping you turn visitors into leads and customers without the guesswork.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt" id="process">
+        <div class="container">
+            <div class="subtitle">Simple, Streamlined Process</div>
+            <h2>How We Create Your Custom Website</h2>
+            <p>Our approach ensures a seamless experience from start to finish, with a focus on delivering a website that grows with your business.</p>
+            
+            <div class="process">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h3>We Design</h3>
+                        <p>We create a visually stunning, high-converting website tailored to your brand or refine and implement your existing designs.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h3>We Build</h3>
+                        <p>Our experts develop a pixel-perfect, fully modular site optimized for performance, SEO, and user experience.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h3>You Scale</h3>
+                        <p>Use your modular template to grow your site with ease—infinitely expandable and fully functional without unnecessary maintenance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="why-us">
+        <div class="container">
+            <div class="subtitle">Perfect For Your Business</div>
+            <h2>Ideal for Businesses That Need Efficiency & Lead Conversion</h2>
+            <p>We specialize in creating websites for SaaS companies, tech startups, small businesses, and any organization that needs a sleek, high-performing, and conversion-optimized online presence without unnecessary headaches.</p>
+            
+            <div class="benefits">
+                <div class="benefit">
+                    <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <div>
+                        <h3>You Own It, and It Works—Indefinitely</h3>
+                        <p>Your site is built to last, with a robust modular framework that maintains visual and functional integrity. No ongoing development retainers, no breaking styles.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit">
+                    <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <div>
+                        <h3>SEO & Speed Optimized</h3>
+                        <p>Fast-loading, search-friendly sites designed for maximum visibility and better user experience, leading to higher conversion rates.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit">
+                    <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <div>
+                        <h3>Proven Expertise Across Industries</h3>
+                        <p>We have a track record of building high-value websites for SaaS companies, tech firms, small businesses, and organizations that require fast, high-performance sites.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit">
+                    <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <div>
+                        <h3>No Unnecessary Hurdles—Just Results</h3>
+                        <p>No frustrating development bottlenecks. We deliver a polished, professional website in weeks, not months, so you can launch, iterate, and scale faster than ever.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="callout" id="contact">
+                <h2>Struggling to Translate Your Branding Into a Modern, High-Converting Website?</h2>
+                <p>Let's build a powerful, flexible, and stunning online presence for your brand. Your website should work for you, not the other way around.</p>
+                <a href="https://calendly.com/" target="_blank" class="cta-button">Schedule a Free Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MyCustomTemplate</h3>
+                    <p>Custom WordPress templates for modern businesses. Built for performance, conversion, and growth.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Custom WordPress Templates</a></li>
+                        <li><a href="#">Website Design</a></li>
+                        <li><a href="#">Component Libraries</a></li>
+                        <li><a href="#">Conversion Optimization</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="mailto:hello@mycustomtemplate.com">hello@mycustomtemplate.com</a></li>
+                        <li><a href="tel:+15551234567">(555) 123-4567</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 MyCustomTemplate. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('nav').classList.add('active');
+        });
+        
+        document.getElementById('closeMenu').addEventListener('click', function() {
+            document.getElementById('nav').classList.remove('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('nav').classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
