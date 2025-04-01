@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyCustomTemplate - Webflow Inspired Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0066FF;
+            --primary-dark: #0052CC;
+            --secondary: #1A1A1A;
+            --accent: #FF3366;
+            --light: #FFFFFF;
+            --gray: #666666;
+            --gray-light: #F5F5F5;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--secondary);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        header {
+            padding: 24px 0;
+            background-color: var(--light);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        header.scrolled {
+            padding: 16px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            background: var(--primary);
+            color: var(--light);
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            background: var(--primary-dark);
+        }
+        
+        .hero {
+            padding: 160px 0 120px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #F8F9FF 0%, #FFFFFF 100%);
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-text {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .hero-image {
+            position: relative;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: fadeInRight 0.8s ease forwards;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-image img:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        h1 {
+            font-size: 64px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--secondary);
+            letter-spacing: -0.02em;
+        }
+        
+        h2 {
+            font-size: 40px;
+            margin-bottom: 24px;
+            color: var(--secondary);
+            letter-spacing: -0.02em;
+        }
+        
+        p {
+            margin-bottom: 24px;
+            color: var(--gray);
+            font-size: 18px;
+            line-height: 1.7;
+        }
+        
+        .section {
+            padding: 120px 0;
+            position: relative;
+        }
+        
+        .section-alt {
+            background-color: var(--gray-light);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .feature-card {
+            background: var(--light);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .feature-card:nth-child(1) { animation-delay: 0.2s; }
+        .feature-card:nth-child(2) { animation-delay: 0.4s; }
+        .feature-card:nth-child(3) { animation-delay: 0.6s; }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background: var(--primary);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .icon {
+            transform: scale(1.1);
+        }
+        
+        .icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--light);
+        }
+        
+        .process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .process-step {
+            background: var(--light);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .process-step:nth-child(1) { animation-delay: 0.2s; }
+        .process-step:nth-child(2) { animation-delay: 0.4s; }
+        .process-step:nth-child(3) { animation-delay: 0.6s; }
+        
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: var(--light);
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .process-step:hover .step-number {
+            transform: scale(1.1);
+        }
+        
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .benefit {
+            background: var(--light);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .benefit:nth-child(1) { animation-delay: 0.2s; }
+        .benefit:nth-child(2) { animation-delay: 0.4s; }
+        .benefit:nth-child(3) { animation-delay: 0.6s; }
+        .benefit:nth-child(4) { animation-delay: 0.8s; }
+        
+        .benefit:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .benefit-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 20px;
+            color: var(--primary);
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            color: var(--light);
+            padding: 80px 0 40px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-column h3 {
+            color: var(--light);
+            margin-bottom: 24px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 24px;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 16px;
+        }
+        
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 16px;
+        }
+        
+        .footer-column a:hover {
+            color: var(--light);
+            transform: translateX(5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .parallax-section {
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0;
+            background: linear-gradient(135deg, #F8F9FF 0%, #FFFFFF 100%);
+        }
+        
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="%230066FF" fill-opacity="0.05"/></svg>');
+            opacity: 0.5;
+            transform: translateZ(-1px) scale(2);
+            z-index: 1;
+        }
+        
+        .parallax-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            h1 {
+                font-size: 56px;
+            }
+            
+            h2 {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+            
+            .hero-text {
+                text-align: center;
+            }
+            
+            .hero-image {
+                max-width: 80%;
+                margin: 0 auto;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 40px;
+            }
+            
+            h2 {
+                font-size: 32px;
+            }
+            
+            .feature-grid,
+            .process,
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-column a:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">MyCustomTemplate</a>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#process">Process</a>
+                <a href="#why-us">Why Us</a>
+                <a href="https://calendly.com/joshmcguire/30min" class="cta-button">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <div class="subtitle">Escape The Visual Editor Nightmare</div>
+                <h1>Stop Fighting With Website Builders</h1>
+                <p>Stop wasting hours fighting with Elementor, Divi, or WPBakery just to align text properly. Your business deserves a custom template built for performance, not perpetual troubleshooting.</p>
+                <a href="https://calendly.com/joshmcguire/30min" class="cta-button">Get Your Free Assessment</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2425&q=80" alt="Custom WordPress Template" />
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="features">
+        <div class="container">
+            <div class="subtitle">Never Debug Visual Editors Again</div>
+            <h2>Focus on Business Growth, Not CSS Frustrations</h2>
+            <p>You've experienced it - spending hours just to center a div, fix breaking layouts, or troubleshoot plugin conflicts. While page builders promise ease, they deliver headaches. Our custom templates eliminate these pain points forever.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                        </svg>
+                    </div>
+                    <h3>True Component-Based System</h3>
+                    <p>Create unlimited new pages in minutes by simply arranging pre-built modules. Need a pricing page? Choose from ready-made pricing modules. Landing page? Mix and match hero sections, feature grids, and testimonial blocks - all perfectly aligned with your brand, every time.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3>Lightning-Fast Headless Options</h3>
+                    <p>For enterprise clients, we offer headless WordPress setups that deliver jaw-dropping load times. Imagine sub-second page loads, 90+ PageSpeed scores, and seamless API connections to any service you need.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                        </svg>
+                    </div>
+                    <h3>Perfect for Marketing-Driven Businesses</h3>
+                    <p>Launch targeted campaign pages in hours, not weeks. Need 5 different landing pages for your Google Ads campaigns? A dedicated funnel for Facebook traffic? Our modular system means you just drop in your copy, select the right components, and launch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="parallax-section" id="process">
+        <div class="parallax-bg"></div>
+        <div class="container parallax-content">
+            <div class="subtitle">We Create Your Component Library</div>
+            <h2>Your Team Takes Control</h2>
+            <p>Finally, we train your team on creating new pages with your component library. Need a new landing page? Choose your components, drop in your content, and publish - all without touching code or fighting with unreliable visual editors.</p>
+            
+            <div class="process">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>We Build Your Library</h3>
+                    <p>First, we build a comprehensive library of custom components tailored to your brand and specific business needs. Think of it as your own private design system - every button, card, form, and section perfectly crafted and ready to deploy.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>We Migrate Everything</h3>
+                    <p>Next, we handle the complete migration of your existing content, restructuring it to take advantage of your new components. Your blog posts, service pages, products, and media are carefully integrated into the new system while maintaining your SEO value.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>You Launch Fast</h3>
+                    <p>Marketing campaigns can now launch in hours, not weeks. Need 5 different landing pages for your Google Ads campaigns? A dedicated funnel for Facebook traffic? Our modular system means you just drop in your copy, select the right components, and launch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt" id="why-us">
+        <div class="container">
+            <div class="subtitle">Perfect For Your Business</div>
+            <h2>Ideal for Businesses That Need Efficiency & Lead Conversion</h2>
+            <p>We specialize in creating websites for SaaS companies, tech startups, small businesses, and any organization that needs a sleek, high-performing, and conversion-optimized online presence without unnecessary headaches.</p>
+            
+            <div class="benefits">
+                <div class="benefit">
+                    <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <h3>You Own It, and It Works—Indefinitely</h3>
+                    <p>Your site is built to last, with a robust modular framework that maintains visual and functional integrity. No ongoing development retainers, no breaking styles.</p>
+                </div>
+                
+                <div class="benefit">
+                    <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <h3>SEO & Speed Optimized</h3>
+                    <p>Fast-loading, search-friendly sites designed for maximum visibility and better user experience, leading to higher conversion rates.</p>
+                </div>
+                
+                <div class="benefit">
+                    <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <h3>Proven Expertise Across Industries</h3>
+                    <p>We have a track record of building high-value websites for SaaS companies, tech firms, small businesses, and organizations that require fast, high-performance sites.</p>
+                </div>
+                
+                <div class="benefit">
+                    <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <h3>No Unnecessary Hurdles—Just Results</h3>
+                    <p>No frustrating development bottlenecks. We deliver a polished, professional website in weeks, not months, so you can launch, iterate, and scale faster than ever.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 80px;">
+                <a href="https://calendly.com/joshmcguire/30min" class="cta-button">Schedule Your Free Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MyCustomTemplate</h3>
+                    <p>Custom WordPress templates for modern businesses. Built for performance, conversion, and growth.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Custom WordPress Templates</a></li>
+                        <li><a href="#">Website Design</a></li>
+                        <li><a href="#">Component Libraries</a></li>
+                        <li><a href="#">Conversion Optimization</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="mailto:hello@mycustomtemplate.com">hello@mycustomtemplate.com</a></li>
+                        <li><a href="tel:+15551234567">(555) 123-4567</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 MyCustomTemplate. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Parallax effect
+        window.addEventListener('scroll', function() {
+            const parallaxBg = document.querySelector('.parallax-bg');
+            const scrolled = window.pageYOffset;
+            parallaxBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

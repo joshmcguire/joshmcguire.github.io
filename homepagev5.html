@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyCustomTemplate - Custom WordPress Templates for Modern Businesses</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00FF00;
+            --secondary: #FF00FF;
+            --accent: #FFFF00;
+            --bg: #000080;
+            --text: #FFFFFF;
+            --border: #C0C0C0;
+            --gradient: repeating-linear-gradient(45deg, #000080, #0000FF 10px, #000080 20px);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            image-rendering: pixelated;
+        }
+        
+        body {
+            font-family: 'VT323', monospace;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+            background-image: var(--gradient);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: #000000;
+            padding: 20px 0;
+            border-bottom: 3px solid var(--border);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 20px;
+            color: var(--primary);
+            text-shadow: 2px 2px 0 var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 18px;
+            padding: 5px 10px;
+            border: 2px solid var(--border);
+            background: #000000;
+        }
+        
+        nav a:hover {
+            background: var(--primary);
+            color: #000000;
+        }
+        
+        .hero {
+            padding: 40px 0;
+            text-align: center;
+            background: #000000;
+            border-bottom: 3px solid var(--border);
+        }
+        
+        .hero h1 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-shadow: 2px 2px 0 var(--secondary);
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            border: 3px solid var(--border);
+            font-family: 'Press Start 2P', cursive;
+            font-size: 14px;
+        }
+        
+        .section {
+            padding: 40px 0;
+            background: #000000;
+            border-bottom: 3px solid var(--border);
+        }
+        
+        .section h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-shadow: 2px 2px 0 var(--secondary);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .feature-card {
+            background: #000080;
+            padding: 20px;
+            border: 3px solid var(--border);
+            text-align: center;
+        }
+        
+        .feature-card h3 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        .process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .process-step {
+            background: #000080;
+            padding: 20px;
+            border: 3px solid var(--border);
+        }
+        
+        .step-number {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 20px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .benefit {
+            background: #000080;
+            padding: 20px;
+            border: 3px solid var(--border);
+        }
+        
+        footer {
+            background: #000000;
+            padding: 40px 0 20px;
+            border-top: 3px solid var(--border);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column h3 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 16px;
+        }
+        
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 2px solid var(--border);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .hero h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">MyCustomTemplate</div>
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#why-us">Why Us</a></li>
+                    <li><a href="https://calendly.com/joshmcguire/30min" class="cta-button">Get Started</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Stop Fighting With Website Builders</h1>
+            <p>Stop wasting hours fighting with Elementor, Divi, or WPBakery just to align text properly. Your business deserves a custom template built for performance, not perpetual troubleshooting.</p>
+            <a href="https://calendly.com/joshmcguire/30min" class="cta-button">Get Your Free Assessment</a>
+        </div>
+    </section>
+
+    <section class="section" id="features">
+        <div class="container">
+            <h2>Focus on Business Growth, Not CSS Frustrations</h2>
+            <p>You've experienced it - spending hours just to center a div, fix breaking layouts, or troubleshoot plugin conflicts. While page builders promise ease, they deliver headaches. Our custom templates eliminate these pain points forever.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>True Component-Based System</h3>
+                    <p>Create unlimited new pages in minutes by simply arranging pre-built modules. Need a pricing page? Choose from ready-made pricing modules. Landing page? Mix and match hero sections, feature grids, and testimonial blocks - all perfectly aligned with your brand, every time.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Lightning-Fast Headless Options</h3>
+                    <p>For enterprise clients, we offer headless WordPress setups that deliver jaw-dropping load times. Imagine sub-second page loads, 90+ PageSpeed scores, and seamless API connections to any service you need.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Perfect for Marketing-Driven Businesses</h3>
+                    <p>Launch targeted campaign pages in hours, not weeks. Need 5 different landing pages for your Google Ads campaigns? A dedicated funnel for Facebook traffic? Our modular system means you just drop in your copy, select the right components, and launch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="process">
+        <div class="container">
+            <h2>Your Team Takes Control</h2>
+            <p>Finally, we train your team on creating new pages with your component library. Need a new landing page? Choose your components, drop in your content, and publish - all without touching code or fighting with unreliable visual editors.</p>
+            
+            <div class="process">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>We Build Your Library</h3>
+                    <p>First, we build a comprehensive library of custom components tailored to your brand and specific business needs. Think of it as your own private design system - every button, card, form, and section perfectly crafted and ready to deploy.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>We Migrate Everything</h3>
+                    <p>Next, we handle the complete migration of your existing content, restructuring it to take advantage of your new components. Your blog posts, service pages, products, and media are carefully integrated into the new system while maintaining your SEO value.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>You Launch Fast</h3>
+                    <p>Marketing campaigns can now launch in hours, not weeks. Need 5 different landing pages for your Google Ads campaigns? A dedicated funnel for Facebook traffic? Our modular system means you just drop in your copy, select the right components, and launch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="why-us">
+        <div class="container">
+            <h2>Ideal for Businesses That Need Efficiency & Lead Conversion</h2>
+            <p>We specialize in creating websites for SaaS companies, tech startups, small businesses, and any organization that needs a sleek, high-performing, and conversion-optimized online presence without unnecessary headaches.</p>
+            
+            <div class="benefits">
+                <div class="benefit">
+                    <h3>You Own It, and It Works—Indefinitely</h3>
+                    <p>Your site is built to last, with a robust modular framework that maintains visual and functional integrity. No ongoing development retainers, no breaking styles.</p>
+                </div>
+                
+                <div class="benefit">
+                    <h3>SEO & Speed Optimized</h3>
+                    <p>Fast-loading, search-friendly sites designed for maximum visibility and better user experience, leading to higher conversion rates.</p>
+                </div>
+                
+                <div class="benefit">
+                    <h3>Proven Expertise Across Industries</h3>
+                    <p>We have a track record of building high-value websites for SaaS companies, tech firms, small businesses, and organizations that require fast, high-performance sites.</p>
+                </div>
+                
+                <div class="benefit">
+                    <h3>No Unnecessary Hurdles—Just Results</h3>
+                    <p>No frustrating development bottlenecks. We deliver a polished, professional website in weeks, not months, so you can launch, iterate, and scale faster than ever.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://calendly.com/joshmcguire/30min" class="cta-button">Schedule Your Free Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MyCustomTemplate</h3>
+                    <p>Custom WordPress templates for modern businesses. Built for performance, conversion, and growth.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Custom WordPress Templates</a></li>
+                        <li><a href="#">Website Design</a></li>
+                        <li><a href="#">Component Libraries</a></li>
+                        <li><a href="#">Conversion Optimization</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="mailto:hello@mycustomtemplate.com">hello@mycustomtemplate.com</a></li>
+                        <li><a href="tel:+15551234567">(555) 123-4567</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 MyCustomTemplate. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
